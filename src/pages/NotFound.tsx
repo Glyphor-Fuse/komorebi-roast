@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import { Header } from "@/components/Header";
+import { motion } from "framer-motion";
 
 export default function NotFound() {
   const location = useLocation();
@@ -13,21 +13,21 @@ export default function NotFound() {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
-      <Header />
-      <div className="flex-grow flex flex-col items-center justify-center text-primary px-4">
-        <span className="font-mono text-sm uppercase tracking-[0.3em] mb-4">Error // 404</span>
-        <h1 className="text-7xl font-serif italic mb-8">Void Detected.</h1>
-        <p className="font-mono text-muted max-w-md text-center">
-          The coordinate {location.pathname} does not exist in this temporal plane.
-        </p>
-        <a 
-          href="/" 
-          className="mt-12 font-mono border border-primary px-8 py-4 hover:bg-primary hover:text-background transition-all"
+    <div className="min-h-screen flex items-center justify-center bg-background p-4">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="text-center"
+      >
+        <h1 className="text-6xl font-bold text-primary mb-4">404</h1>
+        <p className="text-xl text-muted mb-8 italic">The path has been obscured.</p>
+        <a
+          href="/"
+          className="px-8 py-3 bg-primary text-background uppercase tracking-widest text-sm hover:bg-accent transition-colors"
         >
-          RETURN_TO_STILLNESS
+          Return to Sanctuary
         </a>
-      </div>
+      </motion.div>
     </div>
   );
 }

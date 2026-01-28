@@ -1,58 +1,48 @@
 import { motion } from "framer-motion";
-import { Shield, Zap, Wind, HardHat } from "lucide-react";
+import { Shield, Wind, Cpu, Eye } from "lucide-react";
 
 const features = [
   {
-    icon: <Wind className="w-6 h-6" />,
-    title: "Ma (Negative Space)",
-    desc: "Intentional void in the digital landscape, allowing content to breathe through structural emptiness."
+    icon: Wind,
+    title: "Silent Ops",
+    description: "Minimalist architectures designed for zero cognitive load and maximum flow state."
   },
   {
-    icon: <HardHat className="w-6 h-6" />,
-    title: "Brutalist Steel",
-    desc: "Rigid grid systems anchored by 12-column foundations and industrial fixed-width metadata."
+    icon: Shield,
+    title: "Fortified Calm",
+    description: "Immutable security protocols wrapped in an interface of absolute serenity."
   },
   {
-    icon: <Zap className="w-6 h-6" />,
-    title: "Neon Pulse",
-    desc: "Sharp, high-chroma accents that cut through monochromatic silence like Shinjuku signage."
+    icon: Cpu,
+    title: "Neural Engine",
+    description: "Predictive algorithms that anticipate intent before a single click is made."
   },
   {
-    icon: <Shield className="w-6 h-6" />,
-    title: "Temporal Drift",
-    desc: "Motion that respects the weight of time, utilizing staggered children and fluid transitions."
+    icon: Eye,
+    title: "Pure Optics",
+    description: "Pixel-perfect visual harmony adhering to the golden ratio of cybernetics."
   }
 ];
 
 export function FeaturesSection() {
   return (
-    <section className="container mx-auto px-8">
-      <div className="asymmetric-grid border-t border-primary pt-24">
-        <div className="col-span-12 md:col-span-4 mb-16 md:mb-0">
-          <span className="font-mono text-xs uppercase tracking-widest text-muted">Core // Principles</span>
-          <h2 className="text-5xl font-serif mt-4">Structural <br />Harmony</h2>
-        </div>
-        
-        <div className="col-span-12 md:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-16">
-          {features.map((f, i) => (
-            <motion.div 
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="group"
-            >
-              <div className="mb-6 p-4 bg-primary text-secondary inline-block group-hover:bg-accent transition-colors duration-500">
-                {f.icon}
-              </div>
-              <h3 className="font-serif text-2xl mb-4 italic">{f.title}</h3>
-              <p className="font-mono text-sm text-muted leading-relaxed uppercase tracking-tight">
-                {f.desc}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-primary/5 border border-primary/5">
+      {features.map((f, i) => (
+        <motion.div
+          key={f.title}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: i * 0.1 }}
+          viewport={{ once: true }}
+          className="bg-background p-12 group hover:bg-secondary transition-colors duration-500"
+        >
+          <f.icon className="w-8 h-8 text-accent mb-8 group-hover:scale-110 transition-transform" />
+          <h3 className="text-lg font-ritual mb-4 group-hover:text-background transition-colors">{f.title}</h3>
+          <p className="text-muted text-sm leading-relaxed group-hover:text-background/60 transition-colors">
+            {f.description}
+          </p>
+        </motion.div>
+      ))}
+    </div>
   );
 }

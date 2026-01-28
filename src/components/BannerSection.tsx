@@ -1,46 +1,65 @@
 import { motion } from "framer-motion";
 import { LiquidEther } from "@/components/ui/LiquidEther";
+import { Orb } from "@/components/ui/orb";
 
 export function BannerSection() {
   return (
-    <section className="relative h-screen flex items-center overflow-hidden">
-      <div className="absolute inset-0 z-0 opacity-40">
-        <LiquidEther />
-      </div>
+    <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden border-b border-primary/5">
+      <LiquidEther />
       
-      <div className="container mx-auto relative z-10 asymmetric-grid">
-        <div className="col-span-12 md:col-start-2 md:col-span-10">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
-          >
-            <span className="font-mono text-xs text-muted uppercase tracking-[0.4em] block mb-6">
-              V01 // THE_SILENT_PULSE
-            </span>
-            <h1 className="text-7xl md:text-[10rem] font-serif leading-[0.85] text-primary">
-              Temporal <br />
-              <span className="italic pl-12 md:pl-32">Zen.</span>
-            </h1>
-          </motion.div>
+      <div className="absolute inset-0 z-0">
+        <Orb className="top-1/4 left-1/4" size="400px" opacity={0.15} />
+        <Orb className="bottom-1/4 right-1/4" size="600px" opacity={0.1} />
+      </div>
+
+      <div className="relative z-10 px-4 max-w-5xl w-full">
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="flex flex-col gap-6"
+        >
+          <div className="flex items-center gap-4">
+            <span className="h-[1px] w-20 bg-accent" />
+            <span className="text-[10px] uppercase tracking-[0.3em] text-muted">Initialize Sequence // 001</span>
+          </div>
           
-          <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.8 }}
-            className="mt-12 md:mt-0 md:absolute md:right-0 md:top-1/2 md:w-1/3 text-right"
-          >
-            <p className="font-mono text-sm text-muted leading-relaxed uppercase">
-              Merging the stillness of a Kyoto morning with the frantic neon pulse of Shinjuku. 
-              An exercise in digital restraint.
+          <h1 className="text-6xl md:text-9xl font-bold leading-none tracking-tighter text-primary">
+            DIGITAL<br />
+            <span className="text-accent italic">RITUAL</span>
+          </h1>
+
+          <div className="max-w-md mt-8">
+            <p className="text-muted-foreground leading-relaxed">
+              We weave high-fidelity cybernetic interfaces with the stillness of zen philosophy. 
+              Engineering tranquility into every millisecond of interaction.
             </p>
-            <div className="mt-8 h-[1px] w-32 bg-accent inline-block" />
-          </motion.div>
-        </div>
+          </div>
+
+          <div className="mt-12 flex gap-8">
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-10 py-4 bg-primary text-background font-ritual text-xs"
+            >
+              Enter Sanctum
+            </motion.button>
+            <button className="flex items-center gap-4 text-xs font-ritual hover:text-accent transition-colors">
+              <span>VIEW MANIFESTO</span>
+              <div className="w-4 h-4 rounded-full border border-primary flex items-center justify-center">
+                <div className="w-1 h-1 bg-primary rounded-full" />
+              </div>
+            </button>
+          </div>
+        </motion.div>
       </div>
-      
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 font-mono text-[10px] tracking-[1em] text-muted animate-bounce">
-        SCROLL_TO_DESCEND
+
+      <div className="absolute bottom-12 right-12 hidden md:block">
+        <div className="flex flex-col gap-2 items-end">
+          <span className="text-[8px] text-muted tracking-widest font-mono">LATENCY // 1.2MS</span>
+          <span className="text-[8px] text-muted tracking-widest font-mono">ENCRYPTION // AES-256</span>
+          <span className="text-[8px] text-muted tracking-widest font-mono">STATUS // HARMONIOUS</span>
+        </div>
       </div>
     </section>
   );

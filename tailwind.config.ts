@@ -21,37 +21,35 @@ export default {
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
+        ring: "hsl(var(--accent))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--secondary))",
+          foreground: "hsl(var(--background))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--primary))",
+          foreground: "hsl(var(--foreground))",
         },
         accent: {
           DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--background))",
+          foreground: "white",
         },
         muted: {
           DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--secondary))",
+          foreground: "hsl(var(--foreground))",
         },
       },
       fontFamily: {
-        serif: ["'Playfair Display'", "serif"],
-        mono: ["'JetBrains Mono'", "monospace"],
+        mono: ["Space Mono", "monospace"],
+        sans: ["Inter", "sans-serif"],
       },
       gridTemplateColumns: {
-        '12': 'repeat(12, minmax(0, 1fr))',
-      },
-      spacing: {
-        'gutter': '80px',
+        'asymmetric': '1fr 2fr 1fr',
+        'ritual': 'minmax(100px, 1fr) 3fr minmax(100px, 1fr)',
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [],
 } satisfies Config;
